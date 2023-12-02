@@ -1,0 +1,35 @@
+.back{
+	
+	background-color: azure;
+	
+}
+.titolo{
+	text-align: center;
+}
+.contenuto{
+	text-align: center;
+	display: flex;
+}
+.contenuto img{
+	width: 200px;
+	height: 100px;
+}
+div{
+	padding: 1%;
+}
+.modal-back{
+	display: none;
+	margin-left: 25%;
+	text-align: center;
+	background-color: rgba(0, 128, 255,0.5);
+	z-index: 1;
+	width: 50%;
+	height: 50%;
+	position: fixed;
+	top: 10%;
+    left: 0;
+	
+}
+.modal-contenuto{
+	background-color: rgb(150, 176, 79);
+}

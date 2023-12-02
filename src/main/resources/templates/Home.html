@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="ISO-8859-1">
+		<link rel="stylesheet" href="/css/home.css">
+	</head>
+	<body>
+		<div class="back">
+			
+			<div class="titolo">
+				<h1>GESTIONE GIOCHI</h1>
+			</div>
+			<div class="modifiche">
+				
+			<button onclick="">aggiungi gioco</button>
+			</div>
+			<div class="contenuto">
+				
+				<div th:each="gioco:${listaGiochi}" >
+					<h1 th:text="${gioco.value.getName}"></h1>
+					<a th:href="Teams.html"><img th:src="${gioco.value.getUrl}"alt="immagine del gioco">
+					
+					</a>
+				</div>
+				
+			</div>
+			<!-->modale per addGiochi<-->
+			<div id="addGame" class="modal-back">
+				<div class="modal-contenuto">
+					
+				</div>
+			</div>
+		</div>
+	</body>
+	<script source="/js/Home.js"></script>
+</html>
