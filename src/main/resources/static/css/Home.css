@@ -19,21 +19,40 @@ div{
 }
 .modal-back{
 	display: none;
-	margin-left: 25%;
-	background-color: rgba(0, 128, 255,0.5);
 	z-index: 1;
-	width: 50%;
-	height: 50%;
+	width: 100%;
+	height: 100%;
 	position: fixed;
-	top: 10%;
+	top: 0;
     left: 0;
-	
 }
 .modal-contenuto{
-	background-color: rgb(150, 176, 79);
-}
-input{
+	text-align: center;
+	background-color: rgb(167, 223, 12);
+	margin-top: 10%;
 	margin-left: 25%;
+	height: 50%;
+	width: 50%;
+}
+
+input{
+	size: 5%;
 	width: 50%;
 
+}
+#bt-add-game{
+	float: right;
+}
+.close{
+	float: right;
+	color: gray;
+}
+.close :hover{
+	color: black;
+	cursor: pointer;
+}
+.close:hover,
+.close:focus {
+	color: black;
+	cursor: pointer;
 }

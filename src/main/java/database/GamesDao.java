@@ -16,6 +16,8 @@ public class GamesDao {
 		String[] parametri= {e.get("titolo"),e.get("url")};
 		Database.eseguiQuery(query,parametri);
 	} 
+
+	//read all games
 	public static HashMap<Integer,Games> readAll() {
 		String query="select* from games";
 		HashMap<Integer, HashMap<String, Object>> dati=Database.eseguiQuery(query);

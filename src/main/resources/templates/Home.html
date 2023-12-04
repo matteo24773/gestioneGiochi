@@ -4,10 +4,10 @@
 
 		<meta charset="ISO-8859-1">
 		<link rel="stylesheet" href="/css/home.css">
-		<script source="/js/Home.js"></script>
+		<script src="/js/Home.js"></script>
 		
 	</head>
-	<body onload="">
+	<body onload="init()">
 		<div class="back">
 			
 			<div class="titolo">
@@ -21,19 +21,23 @@
 				
 				<div th:each="gioco:${listaGiochi}" >
 					<h1 th:text="${gioco.value.getName}"></h1>
-					<a th:href="Teams.html"><img th:src="${gioco.value.getUrl}"alt="immagine del gioco">
+					<a th:href="Teams.html"><img th:src="${gioco.value.getUrl}"alt="immagine del gioco"><br>
+						<button>elimina</button>
+						<button>modifica</button>
 					
 					</a>
 				</div>
 				
 			</div>
-			<!-->modale per addGiochi<-->
+			
+			<!--modale per addGiochi-->
 			<div id="addGame" class="modal-back"> 
 				<div class="modal-contenuto">
+					<span id="close-addGame" class="close">x</span><br>
 					<form action="/home/addGame">
 						<input type="text" placeholder="nome" required><br>
 						<input type="text" placeholder="percorso dell'immagine"><br>
-						<button type="submit"></button>
+						<button type="submit">inserisci</button>
 					</form>
 				</div>
 			</div>
