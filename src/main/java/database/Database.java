@@ -17,6 +17,8 @@ public class Database {
 	
 	
 	private static Database instance;
+
+
 	private Database() {
 		openConnection();
 	}
@@ -29,6 +31,7 @@ public class Database {
 	}
 	
 	private static Connection conn;
+	
 	private static Connection getConnection() {
 		if(conn==null) {
 			openConnection();
@@ -78,7 +81,7 @@ public class Database {
 		}
 		
 	}
-	public static HashMap<Integer, HashMap<String, Object>> eseguiQuery(String query,String...parametri) {
+	public HashMap<Integer, HashMap<String, Object>> eseguiQuery(String query,String...parametri) {
 		HashMap<Integer, HashMap<String, Object>> dati=new HashMap<Integer, HashMap<String, Object>>();
 		PreparedStatement ps=null;
 		ResultSet rs=null;

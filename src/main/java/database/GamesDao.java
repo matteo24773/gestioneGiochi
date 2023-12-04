@@ -6,21 +6,32 @@ import java.util.HashMap;
 import model.Games;
 
 public class GamesDao {
+
+	private static GamesDao instance;
+
+	private GamesDao() {
+	}
+
+	public static GamesDao getInstance() {
+		if(instance == null) 
+			instance = new GamesDao();
+		return instance;
+	}
 	
 	//crud
 	
 	//create
 	
-	public static void add(HashMap<String, String> e) {
+	public void add(HashMap<String, String> e) {
 		String query="insert into games(titolo,url)value(?,?) ";
-		String[] parametri= {e.get("titolo"),e.get("url")};
-		Database.eseguiQuery(query,parametri);
+		String[] parametri= {e.get("titolo"),e.get("url_image")};
+		Database.getInstance().eseguiQuery(query,parametri);
 	} 
 
 	//read all games
-	public static HashMap<Integer,Games> readAll() {
+	public HashMap<Integer,Games> readAll() {
 		String query="select* from games";
-		HashMap<Integer, HashMap<String, Object>> dati=Database.eseguiQuery(query);
+		HashMap<Integer, HashMap<String, Object>> dati=Database.getInstance().eseguiQuery(query);
 		HashMap<Integer,Games> games=new HashMap<Integer, Games>();
 		for (int chiave : dati.keySet()) {
 			Games game=new Games();

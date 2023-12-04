@@ -18,12 +18,12 @@ public class HomeController {
 @GetMapping("/home")
 	//@RequestMapping(path="/",method = RequestMethod.GET)
 	public String home(Model model) {
-		model.addAttribute("listaGiochi", GamesDao.readAll());
+		model.addAttribute("listaGiochi", GamesDao.getInstance().readAll());
 		return "Home.html";
 	}
 @PostMapping("/home/addGame")
 	public String addGame(@RequestParam HashMap<String, String> parametri) {
-		GamesDao.add(parametri);
+		GamesDao.getInstance().add(parametri);
 	return "redirect:/home";
 	}
 }
