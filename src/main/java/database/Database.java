@@ -44,11 +44,9 @@ public class Database {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn =DriverManager.getConnection(dati.get("percorso"),dati.get("user"),dati.get("pass"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.err.println("errore durante la connesione");
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.err.println("errore:classe non trovato");
 		}
@@ -60,7 +58,6 @@ public class Database {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.err.println("errore durante la chiusura");
 		}
@@ -75,13 +72,12 @@ public class Database {
 				rs.close();
 			}
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 			System.err.println("errore durante le chiusure degli item");
 		}
 		
 	}
-	public HashMap<Integer, HashMap<String, Object>> eseguiQuery(String query,String...parametri) {
+	public HashMap<Integer, HashMap<String, Object>> letturaDb(String query,String...parametri) {
 		HashMap<Integer, HashMap<String, Object>> dati=new HashMap<Integer, HashMap<String, Object>>();
 		PreparedStatement ps=null;
 		ResultSet rs=null;
@@ -98,12 +94,26 @@ public class Database {
 					}
 				}
 		} catch (SQLException e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}finally {
 			closeItem(ps, rs);
 		}
 		return dati;
+	}
+	public void eseguiQuery(String query,String...parametri){
+		PreparedStatement ps=null;
+		try{		
+		ps=getConnection().prepareStatement(query);
+		for (int i = 0; i < parametri.length; i++) {
+			ps.setString(i+1, parametri[i]);
+		}
+
+		ps.execute();
+	}catch(SQLException e){
+		e.printStackTrace();
+	}finally{
+		closeItem(ps,null);
+	}
 	}
 	
 

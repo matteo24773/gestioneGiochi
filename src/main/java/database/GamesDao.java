@@ -23,7 +23,7 @@ public class GamesDao {
 	//create
 	
 	public void add(HashMap<String, String> e) {
-		String query="insert into games(titolo,url)value(?,?) ";
+		String query="insert into games(titolo,url_image)values(?,?) ";
 		String[] parametri= {e.get("titolo"),e.get("url_image")};
 		Database.getInstance().eseguiQuery(query,parametri);
 	} 
@@ -31,7 +31,7 @@ public class GamesDao {
 	//read all games
 	public HashMap<Integer,Games> readAll() {
 		String query="select* from games";
-		HashMap<Integer, HashMap<String, Object>> dati=Database.getInstance().eseguiQuery(query);
+		HashMap<Integer, HashMap<String, Object>> dati=Database.getInstance().letturaDb(query);
 		HashMap<Integer,Games> games=new HashMap<Integer, Games>();
 		for (int chiave : dati.keySet()) {
 			Games game=new Games();

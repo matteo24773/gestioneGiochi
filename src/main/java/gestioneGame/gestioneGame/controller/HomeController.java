@@ -21,9 +21,11 @@ public class HomeController {
 		model.addAttribute("listaGiochi", GamesDao.getInstance().readAll());
 		return "Home.html";
 	}
-@PostMapping("/home/addGame")
+	@PostMapping(path="/home/addGame")
+	//@PostMapping("/home/addGame")
 	public String addGame(@RequestParam HashMap<String, String> parametri) {
 		GamesDao.getInstance().add(parametri);
 	return "redirect:/home";
 	}
 }
+
