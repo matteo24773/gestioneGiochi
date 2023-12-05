@@ -1,6 +1,7 @@
 package database;
 
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import model.Games;
@@ -47,11 +48,25 @@ public class GamesDao {
 	}
 	//delete
 	public void deleteGame(String...ids){
-		String query="delete from games where (id=?)";
+		String query="delete from games where id=?";
 		for(String id:ids){
 			Database.getInstance().eseguiQuery(query, id);
 		}
 		
+	}
+	public void modify( HashMap<String,String> gioco){
+		String query="update games set ?=? where id=?";
+		for (String key : gioco.keySet()) {
+			if (key.equalsIgnoreCase("id")){
+				String[] parametri={key,gioco.get(key),gioco.get("id")};
+			Database.getInstance().eseguiQuery(query,parametri);
+			}
+		}
+		
+
+
+
+
 	}
 
 }
