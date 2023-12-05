@@ -15,7 +15,7 @@ import database.GamesDao;
 @Controller
 public class HomeController {
 	
-@GetMapping("/home")
+	@GetMapping("/home")
 	//@RequestMapping(path="/",method = RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("listaGiochi", GamesDao.getInstance().readAll());
@@ -27,5 +27,13 @@ public class HomeController {
 		GamesDao.getInstance().add(parametri);
 	return "redirect:/home";
 	}
+	@PostMapping(path = "/home/delete")
+	public String deleteGame(@RequestParam String id){
+		GamesDao.getInstance().deleteGame(id);
+
+		return "redirect:/home";
+
+	}
+
 }
 

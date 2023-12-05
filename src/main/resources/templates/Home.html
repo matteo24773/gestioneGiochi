@@ -19,11 +19,18 @@
 			</div>
 			<div class="contenuto">
 				
-				<div th:each="gioco:${listaGiochi}" >
+				<div id="icon" th:each="gioco:${listaGiochi}" >
 					<h1 th:text="${gioco.value.getName}"></h1>
 					<a th:href="Teams.html"><img th:src="${gioco.value.getUrl}"alt="immagine del gioco"><br>
-						<button>elimina</button>
-						<button>modifica</button>
+						<form action="/home/delete" method="post">
+							<input type="hidden" name="id" th:value="${gioco.value.getId}">
+							<button type="submit">elimina</button>
+						</form>
+						<form action="/home/modifica" method="post">
+							
+							<button type="submit">modifica</button>
+						</form>
+						
 					
 					</a>
 				</div>

@@ -23,6 +23,7 @@ public class GamesDao {
 	//create
 	
 	public void add(HashMap<String, String> e) {
+		
 		String query="insert into games(titolo,url_image)values(?,?) ";
 		String[] parametri= {e.get("titolo"),e.get("url_image")};
 		Database.getInstance().eseguiQuery(query,parametri);
@@ -35,6 +36,7 @@ public class GamesDao {
 		HashMap<Integer,Games> games=new HashMap<Integer, Games>();
 		for (int chiave : dati.keySet()) {
 			Games game=new Games();
+			game.setId(String.valueOf(chiave));
 			game.setName((String) dati.get(chiave).get("titolo"));
 			game.setUrl((String) dati.get(chiave).get("url_image"));
 			games.put(chiave,game );
@@ -42,6 +44,14 @@ public class GamesDao {
 		}
 		
 		return games;
+	}
+	//delete
+	public void deleteGame(String...ids){
+		String query="delete from games where (id=?)";
+		for(String id:ids){
+			Database.getInstance().eseguiQuery(query, id);
+		}
+		
 	}
 
 }

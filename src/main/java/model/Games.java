@@ -1,8 +1,9 @@
 package model;
 
 public class Games {
-	private String name,url;
+	private String id,name,url;
 
+	
 	public Games() {
 		
 	}
@@ -25,6 +26,12 @@ public class Games {
 	@Override
 	public String toString() {
 		return "Games [name=" + name + ", url=" + url + "]";
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
 	}
 
 	
