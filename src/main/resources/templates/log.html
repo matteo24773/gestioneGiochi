@@ -26,18 +26,18 @@
         .back-finestra{
             text-align: center;
            padding-top: 10%;
-           padding-left: 33%;
+           padding-left: 40%;
             z-index: 0;
         }
         .finestra{
-            
+            padding-top: 5%;
             position: fixed;
-            width: 33%;
+            width: 20%;
             height: 33%;
             background-color: rgb(0, 187, 255,0.5);
         }
-        h1{
-            color: brown;
+        .finestra input{
+            font-size: 120%;
         }
     </style>
 </head>
@@ -49,12 +49,13 @@
         <div class="finestra">
             <form action="">
                 <label for="userName"></label>
-                <input type="text"id="userName">
+                <input type="text"id="userName" placeholder="userName">
                 <br>
                 <label for="password"></label>
-                <input type="text"id="password">
+                <input type="text"id="password" placeholder="password">
+                <br>
+                <button>LOGIN</button>
             </form>
-            <h1>ciao</h1>
         </div>
     </div>
 </body>

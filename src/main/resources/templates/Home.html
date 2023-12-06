@@ -22,16 +22,15 @@
 				<div id="icon" th:each="gioco:${listaGiochi}" >
 					<h1 th:text="${gioco.value.getName()}"></h1>
 					<a href="Teams.html"><img th:src="${gioco.value.getUrl()}"alt="immagine del gioco"><br>
-						<form th:with="id=${gioco.value.getId()}" action="/home/delete" method="post">
-							<input type="hidden" name="id" th:value="${gioco.value.getId()}">
-							<button type="submit">elimina</button>
-						</form>
-						
 					</a>
+					<form action="/home/delete" method="post">
+						<input type="hidden" name="id" th:value="${gioco.value.getId()}">
+						<button type="submit">elimina</button>
+					</form>
 					<button th:onclick="modify([[${gioco.value.getId()}]])">	modifica</button>
 					<!--
 					<button th:data-id="${gioco.value.getId()}" th:data-titolo="${gioco.value.getName()}" th:data-url="${gioco.value.getUrl()}" onclick="modify(this.dataset)">modifica</button>
-				-->
+				 		-->
 				</div>
 				
 			</div>

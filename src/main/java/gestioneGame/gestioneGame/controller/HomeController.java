@@ -15,6 +15,17 @@ import database.GamesDao;
 @Controller
 public class HomeController {
 
+	@GetMapping("/")
+	public String login(){
+
+		return "log.html";
+	}
+	@PostMapping("/login")
+	public String log(){
+
+		return ""
+	}
+
 	
 	
 	@GetMapping("/home")
