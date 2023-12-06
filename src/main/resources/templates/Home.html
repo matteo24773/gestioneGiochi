@@ -20,19 +20,18 @@
 			<div class="contenuto">
 				
 				<div id="icon" th:each="gioco:${listaGiochi}" >
-					<h1 th:text="${gioco.value.getName}"></h1>
-					<a th:href="Teams.html"><img th:src="${gioco.value.getUrl}"alt="immagine del gioco"><br>
-						<form action="/home/delete" method="post">
-							<input type="hidden" name="id" th:value="${gioco.value.getId}">
+					<h1 th:text="${gioco.value.getName()}"></h1>
+					<a href="Teams.html"><img th:src="${gioco.value.getUrl()}"alt="immagine del gioco"><br>
+						<form th:with="id=${gioco.value.getId()}" action="/home/delete" method="post">
+							<input type="hidden" name="id" th:value="${gioco.value.getId()}">
 							<button type="submit">elimina</button>
 						</form>
-						<form action="/home/modifica" method="post">
-							
-							<button type="submit">modifica</button>
-						</form>
 						
-					
 					</a>
+					<button th:onclick="modify([[${gioco.value.getId()}]])">	modifica</button>
+					<!--
+					<button th:data-id="${gioco.value.getId()}" th:data-titolo="${gioco.value.getName()}" th:data-url="${gioco.value.getUrl()}" onclick="modify(this.dataset)">modifica</button>
+				-->
 				</div>
 				
 			</div>
@@ -45,6 +44,19 @@
 						<input type="text"name="titolo" placeholder="titolo" required><br>
 						<input type="text"name="url_image" placeholder="url"><br>
 						<button type="submit">inserisci</button>
+					</form>
+				</div>
+			</div>
+			 <!-- modale per modifica-->
+			<div id="modifyGame" class="modal-back">
+				<div class="modal-contenuto">
+					<span id="close-modifyGame" class="close">x</span><br>
+					<form id="modify" action="/home/modify" method="post">
+						<input type="text" name="titolo" placeholder="titolo">
+						<input type="text" name="url_image" placeholder="url">
+						<br>
+						<button type="submit">modifica</button>		
+						
 					</form>
 				</div>
 			</div>

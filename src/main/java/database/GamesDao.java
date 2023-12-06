@@ -55,10 +55,13 @@ public class GamesDao {
 		
 	}
 	public void modify( HashMap<String,String> gioco){
-		String query="update games set ?=? where id=?";
+		String colonna="";
+		String query="";
 		for (String key : gioco.keySet()) {
-			if (key.equalsIgnoreCase("id")){
-				String[] parametri={key,gioco.get(key),gioco.get("id")};
+			if (!key.equalsIgnoreCase("id")&&gioco.get(key)!=""){
+				colonna=key;
+				query="update games set "+colonna+"=? where id=?";
+				String[] parametri={gioco.get(key),gioco.get("id")};
 			Database.getInstance().eseguiQuery(query,parametri);
 			}
 		}

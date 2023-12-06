@@ -37,8 +37,9 @@ public class HomeController {
 	@PostMapping(path = "/home/modify")
 	public String modifica(@RequestParam HashMap<String,String> gioco){
 		GamesDao.getInstance().modify(gioco);
-		return"redirector:/home";
+		return"redirect:/home";
 	}
+
 
 }
 
