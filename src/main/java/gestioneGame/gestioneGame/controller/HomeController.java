@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import database.GamesDao;
 @Controller
 public class HomeController {
+
+	
 	
 	@GetMapping("/home")
 	//@RequestMapping(path="/",method = RequestMethod.GET)
